@@ -2,7 +2,6 @@ package IP::Decimal;
 
 use strict;
 use warnings;
-use Exporter;
 use Data::Validate::IP qw/
     is_ipv4
     is_ipv6
@@ -18,28 +17,26 @@ use Math::Int128 qw/
     uint128_to_net
 /;
 
-our @EXPORT = qw/
+use base qw/Exporter/;
+
+our @EXPORT_OK = qw/
    ipv4_to_decimal
    decimal_to_ipv4
    ipv6_to_decimal
    decimal_to_ipv6
 /;
 
-our $VERSION = 0.01;
-
-sub new {
-    return bless {}, shift;
-}
+our $VERSION = 0.02;
 
 sub ipv4_to_decimal {
-    my ($self, $ipv4) = @_;
+    my $ipv4 = shift;
     
     return unpack 'N', inet_aton($ipv4) if is_ipv4 $ipv4;
     return undef;
 }
 
 sub decimal_to_ipv4 {
-    my ($self, $decimal) = @_;
+    my $decimal = shift;
     
     my $ipv4 = join '.', inet_ntoa(pack 'N', $decimal);
     return $ipv4 if is_ipv4 $ipv4;
@@ -47,14 +44,14 @@ sub decimal_to_ipv4 {
 }
 
 sub ipv6_to_decimal {
-    my ($self, $ipv6) = @_;
+    my $ipv6 = shift;
     
     return net_to_uint128(ipv6_aton($ipv6)) if is_ipv6 $ipv6;
     return undef;
 }
 
 sub decimal_to_ipv6 {
-    my ($self, $decimal) = @_;
+    my $decimal = shift;
     
     my $ipv6 = ipv6_ntoa(uint128_to_net($decimal));
     return $ipv6 if is_ipv6 $ipv6;
