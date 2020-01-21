@@ -14,16 +14,16 @@ WriteMakefile(
         },
       
         resources => {
-            homepage => 'https://github.com/lucas1/Mojolicious-Plugin-Model-DB',
+            homepage => 'https://github.com/lucas1/IP-Decimal',
         
             bugtracker => {
-                web => 'https://github.com/lucas1/Mojolicious-Plugin-Model-DB/issues'
+                web => 'https://github.com/lucas1/IP-Decimal/issues'
             },
         
             repository => {
                 type => 'git',
-                url  => 'git@github.com:lucas1/Mojolicious-Plugin-Model-DB.git',
-                web  => 'https://github.com/lucas1/Mojolicious-Plugin-Model-DB'
+                url  => 'git@github.com:lucas1/IP-Decimal.git',
+                web  => 'https://github.com/lucas1/IP-Decimal'
             }
         }        
     },
